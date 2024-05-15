@@ -30,6 +30,9 @@ export default {
           DEFAULT: "#DD62ED",
           foreground: "#ffffff",
         },
+        green:{
+          500:"#17C964",
+        },
         focus: "#F182F6",
       },
       layout: {
