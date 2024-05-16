@@ -8,7 +8,7 @@ export function Cards(){
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('src/components/db.json');
+        const response = await fetch('../db.json');
         const dataFetch = await response.json();
         setDatos(dataFetch.historias);
       } catch (error) {
