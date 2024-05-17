@@ -1,28 +1,14 @@
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 import { Pencil, Trash2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import db from "../db.json"
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/globalContext";
 
 export function Cards(){
-  const [datos, setDatos]= useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // const response = await fetch('../db.json');
-        // const dataFetch = await response.json();
-        // setDatos(dataFetch.historias);
-        setDatos(db.historias);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-    fetchData();
-  }, []);
+  const { historias } = useContext(GlobalContext);
 
     return(
     <>
-    {datos.map((datosMap, index) => (
+    {historias.map((datosMap, index) => (
     <Card key={index} isFooterBlurred className=" w-full h-[300px] col-span-12 sm:col-span-7">
       <CardHeader className="absolute z-10 top-1 flex-col items-start">
         <p className="text-tiny text-white/60 uppercase font-bold">{datosMap.titulo}</p>
