@@ -1,6 +1,7 @@
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 import { Pencil, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import db from "../db.json"
 
 export function Cards(){
   const [datos, setDatos]= useState([])
@@ -8,9 +9,10 @@ export function Cards(){
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('../db.json');
-        const dataFetch = await response.json();
-        setDatos(dataFetch.historias);
+        // const response = await fetch('../db.json');
+        // const dataFetch = await response.json();
+        // setDatos(dataFetch.historias);
+        setDatos(db.historias);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
