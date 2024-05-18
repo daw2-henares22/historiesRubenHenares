@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div className="flex flex-wrap gap-4 items-center">
       <Button color="primary" variant="solid">
-        Solid
+        Solids
       </Button>
       <Button color="primary" variant="faded">
         Faded
