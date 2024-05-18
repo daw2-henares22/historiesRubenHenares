@@ -1,5 +1,5 @@
 import { Button } from "@nextui-org/react";
-import { Cards } from "../components/Cards";
+import { ComponentCards } from "../components/Cards";
 import { Plus } from "lucide-react";
 
 
@@ -12,7 +12,7 @@ export function Home(){
                 Mis historias
         </h2>
         <div className="flex space-x-4 justify-center sm:mx-auto fpx-6 py-12 lg:px-8">
-            <Cards/>
+            <ComponentCards/>
         </div>
         <div className="flex justify-end pr-6">
             <Button className="rounded-full" color="warning" size="lg">
