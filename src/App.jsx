@@ -1,13 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Button } from '@nextui-org/react';
 import './App.css'
 import { Camera, Icon, icons } from 'lucide-react'
 // import { color } from 'framer-motion'
 
 export default function App() {
-  const [count, setCount] = useState(0)
-  const LucideIcon = icons[name];
 
   return (
     <div className="flex flex-wrap gap-4 items-center">
@@ -32,11 +28,6 @@ export default function App() {
       <Button color="primary" variant="shadow">
         Shadow
       </Button>
-      <Camera color="red" size={48} />;
-      <Camera size={48} fill="red" />;
-      <Icon iconNode={burger} />
-      <LucideIcon color={color} size={size} />;
-      <Icon name="Home" />;
     </div>
   );
 }
