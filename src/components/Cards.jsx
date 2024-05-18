@@ -39,7 +39,7 @@ export function ComponentCards(){
   ]
     return(
     <>
-    {historias.slice(0, 5).map((historia, index) => (
+    {historias.slice().map((historia, index) => (
       <ComponentCard
       key={index}
       titulo={historia.titulo}
