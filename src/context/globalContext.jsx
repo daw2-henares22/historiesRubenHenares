@@ -23,17 +23,11 @@ export function GlobalProvider ({ children }) {
       }, []);
 
       const editarHistoria = (nuevaHistoria) => {
-        setDataHistoria((prevHistoria)=> {
-          return prevHistoria.map((historia)=>
-          historia.id === nuevaHistoria.id ? nuevaHistoria : historia
-        )
-          
-        });
         setDataHistoria(nuevaHistoria);
       }
 
     return(
-        <GlobalContext.Provider value={{ historias, dataHistoria, setDataHistoria, editarHistoria }}>
+        <GlobalContext.Provider value={{ historias, dataHistoria, editarHistoria }}>
             {children}
         </GlobalContext.Provider>
     )
