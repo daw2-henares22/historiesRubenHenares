@@ -1,6 +1,5 @@
-import { Button } from "@nextui-org/react";
 import { Cards } from "../components/Cards";
-import { Plus } from "lucide-react";
+import { ModalForm } from "../components/ModalForm";
 
 
 
@@ -15,9 +14,7 @@ export function Home(){
             <Cards/>
         </div>
         <div className="flex justify-end pr-6">
-            <Button className="rounded-full" color="warning" size="lg">
-                <Plus/>
-            </Button>
+            <ModalForm/>
         </div>
     </>
     )
