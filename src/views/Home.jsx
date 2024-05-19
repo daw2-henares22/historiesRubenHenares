@@ -1,5 +1,5 @@
 import { Cards } from "../components/Cards";
-import { ModalForm } from "../components/ModalForm";
+import { ModalFormCreate } from "../components/ModalFormCreate";
 
 
 
@@ -14,7 +14,7 @@ export function Home(){
             <Cards/>
         </div>
         <div className="flex justify-end pr-6">
-            <ModalForm/>
+            <ModalFormCreate/>
         </div>
     </>
     )

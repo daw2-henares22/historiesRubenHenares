@@ -6,7 +6,7 @@ export const GlobalContext = createContext();
 export function GlobalProvider ({ children }) {
     
     const [historias, setHistorias]= useState([])
-    const [dataHistoria, setDataHistoria]= useState([])
+    const [dataHistoria, setDataHistoria]= useState({})
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,12 +22,8 @@ export function GlobalProvider ({ children }) {
         fetchData();
       }, []);
 
-      const editarHistoria = (nuevaHistoria) => {
-        setDataHistoria(nuevaHistoria);
-      }
-
     return(
-        <GlobalContext.Provider value={{ historias, dataHistoria, editarHistoria }}>
+        <GlobalContext.Provider value={{ historias, dataHistoria, setDataHistoria }}>
             {children}
         </GlobalContext.Provider>
     )

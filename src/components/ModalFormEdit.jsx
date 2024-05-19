@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input } from "@nextui-org/react";
-import { Calendar, Pencil, Plus } from "lucide-react";
+import { Calendar, Pencil } from "lucide-react";
 import { GlobalContext } from "../context/globalContext";
 
-export function ModalForm() {
+export function ModalFormEdit() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { dataHistoria, editarHistoria } = useContext(GlobalContext);
-  const [formData, setFormData] = useState(dataHistoria);
+  const { dataHistoria, setDataHistoria } = useContext(GlobalContext);
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     if (isOpen) {
@@ -23,14 +23,14 @@ export function ModalForm() {
   };
 
   const handleSubmit = () => {
-    editarHistoria(formData);
+    setDataHistoria(formData); // Actualizar datos de historia en el contexto global
     onOpenChange(false);
   };
 
   return (
     <>
-      <Button onPress={onOpen} className="rounded-full" color="warning" size="lg">
-        <Plus />
+      <Button onPress={onOpen} className="text-tiny bg-black/20" color="success" variant="bordered" radius="lg" size="sm">
+        <Pencil/>
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>

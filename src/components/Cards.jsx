@@ -1,7 +1,8 @@
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
-import { Pencil, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/globalContext";
+import { ModalFormEdit } from "./ModalFormEdit";
 
 export function Cards(){
   const { historias } = useContext(GlobalContext);
@@ -26,9 +27,9 @@ export function Cards(){
             <p className="text-tiny text-white/60">{datosMap.comentario}</p>
           </div>
         </div>
-        <Button className=" text-tiny bg-black/20" color="success" variant="bordered" radius="lg" size="sm">
-          <Pencil/>
-      </Button>
+
+        <ModalFormEdit/>
+
       <Button className="bg-black/20" color="danger" variant="bordered" radius="lg" size="sm">
         <Trash2/>
       </Button>
