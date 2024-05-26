@@ -1,30 +1,19 @@
-import { createContext, useEffect, useState } from 'react';
-import db from '../db.json'
+import { createContext, useContext, useState } from 'react';
+import db from '../db.json';
 
 export const GlobalContext = createContext();
 
-export function GlobalProvider ({ children }) {
-    
-    const [historias, setHistorias]= useState([])
-    const [dataHistoria, setDataHistoria]= useState({})
+export function GlobalProvider({ children }) {
+  const [historias, setHistorias] = useState(db.historias);
+  const [dataHistoria, setDataHistoria] = useState();
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            // const response = await fetch('../db.json');
-            // const dataFetch = await response.json();
-            // setDatos(dataFetch.historias);
-            setHistorias(db.historias);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        }
-        fetchData();
-      }, []);
-
-    return(
-        <GlobalContext.Provider value={{ historias, dataHistoria, setDataHistoria }}>
-            {children}
-        </GlobalContext.Provider>
-    )
+  return (
+    <GlobalContext.Provider value={{ historias, setHistorias, dataHistoria, setDataHistoria }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 }
+
+export const useGlobalContext = () => {
+  return useContext(GlobalContext);
+};

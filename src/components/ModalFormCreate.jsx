@@ -1,35 +1,41 @@
-import { useContext, useState, useEffect } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input } from "@nextui-org/react";
 import { Calendar, Image, Pencil, Plus } from "lucide-react";
-import { GlobalContext } from "../context/globalContext";
+import { useGlobalContext } from "../context/globalContext";
 
-export function ModalFormCreate() {
+export function ModalFormCreate({ id, titulo, fecha, experiencia, comentario }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { dataHistoria, editarHistoria } = useContext(GlobalContext);
-  const [formData, setFormData] = useState(dataHistoria);
+  const { dataHistoria, setDataHistoria } = useGlobalContext();
+  
 
-  useEffect(() => {
-    if (isOpen) {
-      setFormData(dataHistoria);
-    }
-  }, [isOpen, dataHistoria]);
+  function datosCard() {
+    const historia = {
+      id,
+      titulo,
+      fecha,
+      experiencia,
+      comentario,
+    };
+    setDataHistoria(historia);
+    onOpen();
+  }
 
-  const handleInputChange = (e) => {
+  function handleInputChange(e) {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setDataHistoria((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
-  };
+    }));
+  }
 
-  const handleSubmit = () => {
-    editarHistoria(formData);
-    onOpenChange(false);
-  };
+  function handleSubmit() {
+    console.log(`ID: ${dataHistoria.id}`);
+    console.log('Información de la historia:', dataHistoria);
+    // Aquí puedes añadir la lógica para enviar los datos actualizados al servidor
+  }
 
   return (
     <>
-      <Button onPress={onOpen} className="rounded-full" color="warning" size="lg">
+      <Button onClick={datosCard} className="rounded-full" color="warning" size="lg">
         <Plus />
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
@@ -43,7 +49,7 @@ export function ModalFormCreate() {
                 <Input
                   autoFocus
                   name="fecha"
-                  value={formData.fecha || ""}
+                  value={dataHistoria.fecha || ""}
                   onChange={handleInputChange}
                   endContent={<Calendar className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
                   label="Fecha"
@@ -52,7 +58,7 @@ export function ModalFormCreate() {
                 />
                 <Input
                   name="titulo"
-                  value={formData.titulo || ""}
+                  value={dataHistoria.titulo || ""}
                   onChange={handleInputChange}
                   endContent={<Pencil className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
                   label="Titulo"
@@ -61,21 +67,21 @@ export function ModalFormCreate() {
                 />
                 <Input
                   name="experiencia"
-                  value={formData.experiencia || ""}
+                  value={dataHistoria.experiencia || ""}
                   onChange={handleInputChange}
                   label="Experiencia"
                   placeholder="Describe tu experiencia"
                 />
                 <Input
                   name="comentario"
-                  value={formData.comentario || ""}
+                  value={dataHistoria.comentario || ""}
                   onChange={handleInputChange}
                   label="Comentario"
                   placeholder="Escribe comentarios"
                 />
                 <Input
                   name="imagen"
-                  value={formData.imagen || ""}
+                  value={dataHistoria.imagen || ""}
                   onChange={handleInputChange}
                   endContent={<Image className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
                   label="Imagen"
@@ -86,7 +92,7 @@ export function ModalFormCreate() {
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={handleSubmit}>
+                <Button color="primary" onPress={() => { handleSubmit(); onClose(); }}>
                   Crear Historia
                 </Button>
               </ModalFooter>
