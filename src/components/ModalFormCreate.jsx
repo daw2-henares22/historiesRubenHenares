@@ -94,7 +94,7 @@ export function ModalFormCreate({ id, titulo, fecha, experiencia, comentario }) 
                   Cerrar
                 </Button>
                 <Button color="primary" onPress={() => { DatosController.controladorNuevaHistoria(dataHistoria); onClose(); }}>
-                  Crear Historia
+                  Crear Historias
                 </Button>
               </ModalFooter>
             </>
