@@ -27,11 +27,11 @@ export function ModalFormEdit({ id, titulo, fecha, experiencia, comentario }) {
     }));
   }
 
-  function handleSubmit() {
-    console.log(`ID: ${dataHistoria.id}`);
-    console.log('Información de la historia:', dataHistoria);
-    // Aquí puedes añadir la lógica para enviar los datos actualizados al servidor
-  }
+  // function handleSubmit() {
+  //   console.log(`ID: ${dataHistoria.id}`);
+  //   console.log('Información de la historia:', dataHistoria);
+    
+  // }
 
   return (
     <>

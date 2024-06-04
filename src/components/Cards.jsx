@@ -7,6 +7,7 @@ import { ModalFormEdit } from "./ModalFormEdit";
 export function Cards() {
   const { historias } = useContext(GlobalContext);
 
+ ///////DELETE
  async function borrarDatosCard(id) {
     console.log("ID de la historia a borrar:", id);
     try {

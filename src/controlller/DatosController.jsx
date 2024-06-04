@@ -1,5 +1,6 @@
 const DatosController ={
     
+    ///////POST
     controladorNuevaHistoria: async (dataHistoria) => {
         try {            
             const response = await fetch('https://json-server-vercel-main-phi.vercel.app/historias', {
