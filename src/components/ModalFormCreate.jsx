@@ -1,6 +1,7 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input } from "@nextui-org/react";
 import { Calendar, Image, Pencil, Plus } from "lucide-react";
 import { useGlobalContext } from "../context/globalContext";
+import DatosController from "../controlller/DatosController";
 
 export function ModalFormCreate({ id, titulo, fecha, experiencia, comentario }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -92,7 +93,7 @@ export function ModalFormCreate({ id, titulo, fecha, experiencia, comentario }) 
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={() => { handleSubmit(); onClose(); }}>
+                <Button color="primary" onPress={() => { DatosController.controladorNuevaHistoria(dataHistoria); onClose(); }}>
                   Crear Historia
                 </Button>
               </ModalFooter>

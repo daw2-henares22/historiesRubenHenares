@@ -7,9 +7,22 @@ import { ModalFormEdit } from "./ModalFormEdit";
 export function Cards() {
   const { historias } = useContext(GlobalContext);
 
-  function borrarDatosCard(id) {
+ async function borrarDatosCard(id) {
     console.log("ID de la historia a borrar:", id);
+    try {
+      const response = await fetch(`https://json-server-vercel-main-phi.vercel.app/historias/${id}`, {
+          method: 'DELETE',
+      });
+
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }            
+      console.log(`Historia con ID ${id} borrada exitosamente`);
+  } catch (error) {
+      console.error('Error al borrar la historia:', error);
   }
+} 
+  
 
   return (
     <>

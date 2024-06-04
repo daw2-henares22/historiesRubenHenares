@@ -1,6 +1,7 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
 import { Calendar, Pencil } from "lucide-react";
 import { useGlobalContext } from "../context/globalContext";
+import DatosController from "../controlller/DatosController";
 
 export function ModalFormEdit({ id, titulo, fecha, experiencia, comentario }) {
   const { dataHistoria, setDataHistoria } = useGlobalContext();
@@ -83,9 +84,12 @@ export function ModalFormEdit({ id, titulo, fecha, experiencia, comentario }) {
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="success" onPress={() => { handleSubmit(); onClose(); }}>
+                <Button color="success" onPress={() => {DatosController.controladorEditarHistoria(dataHistoria); onClose();}}>
+                           Actualizar
+                        </Button>
+                {/* <Button color="success" onPress={() => { handleSubmit(); onClose(); }}>
                   Actualizar
-                </Button>
+                </Button> */}
               </ModalFooter>
             </>
           )}
