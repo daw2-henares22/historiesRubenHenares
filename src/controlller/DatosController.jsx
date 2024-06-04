@@ -1,15 +1,5 @@
 const DatosController ={
-
-    // controladorActualizaHistorias: (datos) => {
-
-    //     if (datos == null) {
-    //         DatosController.controladorNuevaHistòria(datos);
-    //         console.log('hola')
-    //     } else {
-    //         DatosController.controladorEditarHistòria(datos);
-    //         console.log('adios')
-    //     }
-    // },
+    
     controladorNuevaHistoria: async (dataHistoria) => {
         try {            
             const response = await fetch('https://json-server-vercel-main-phi.vercel.app/historias', {
